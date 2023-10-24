@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue.js Calculator</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model.number="num1">
+        <select v-model="operator">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="number" v-model.number="num2">
+        <button @click="calculate">calculate</button>
+        <p>= {{ result }}</p>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    num1: 0,
+                    num2: 0,
+                    operator: '+',
+                    result: 0
+                }
+            },
+            methods: {
+                calculate() {
+                    if (this.operator === '+') this.result = this.num1 + this.num2;
+                    else if (this.operator === '-') this.result = this.num1 - this.num2;
+                    else if (this.operator === '*') this.result = this.num1 * this.num2;
+                    else if (this.operator === '/') this.result = this.num1 / this.num2;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
